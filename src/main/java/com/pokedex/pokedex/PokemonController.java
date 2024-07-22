@@ -1,5 +1,9 @@
 package com.pokedex.pokedex;
 
+import com.pokedex.pokedex.PokemonCapturadoDTO;
+import com.pokedex.pokedex.PokemonVistoDTO;
+import com.pokedex.pokedex.Pokemon;
+import com.pokedex.pokedex.PokemonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -53,8 +57,7 @@ public class PokemonController {
             updatedPokemon.setAltura(pokemonDetails.getAltura());
             updatedPokemon.setPeso(pokemonDetails.getPeso());
             updatedPokemon.setCapturado(pokemonDetails.getCapturado());
-            pokemonService.save(updatedPokemon);
-            return ResponseEntity.ok(updatedPokemon);
+            return ResponseEntity.ok(pokemonService.save(updatedPokemon));
         } else {
             return ResponseEntity.notFound().build();
         }
@@ -62,8 +65,7 @@ public class PokemonController {
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deletePokemon(@PathVariable Long id) {
-        Optional<Pokemon> pokemon = pokemonService.findById(id);
-        if (pokemon.isPresent()) {
+        if (pokemonService.findById(id).isPresent()) {
             pokemonService.deleteById(id);
             return ResponseEntity.noContent().build();
         } else {
@@ -71,3 +73,4 @@ public class PokemonController {
         }
     }
 }
+
