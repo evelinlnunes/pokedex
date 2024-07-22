@@ -6,7 +6,7 @@ public class PokemonCapturadoDTO {
     private String nome;
     private String descricao;
     private String imagemUrl;
-    private String tipo;
+    private Tipo tipo; // Atualizado para o tipo enum
     private String categoria;
     private String areaHabitat;
     private Double altura;
@@ -45,11 +45,11 @@ public class PokemonCapturadoDTO {
         this.imagemUrl = imagemUrl;
     }
 
-    public String getTipo() {
+    public Tipo getTipo() {
         return tipo;
     }
 
-    public void setTipo(String tipo) {
+    public void setTipo(Tipo tipo) {
         this.tipo = tipo;
     }
 
@@ -85,3 +85,4 @@ public class PokemonCapturadoDTO {
         this.peso = peso;
     }
 }
+

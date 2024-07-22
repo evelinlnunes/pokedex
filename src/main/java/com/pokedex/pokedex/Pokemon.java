@@ -1,9 +1,6 @@
 package com.pokedex.pokedex;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 @Entity
 public class Pokemon {
@@ -15,7 +12,8 @@ public class Pokemon {
     private String nome;
     private String descricao;
     private String imagemUrl;
-    private String tipo;
+    @Enumerated(value = EnumType.STRING)
+    private Tipo tipo;
     private String categoria;
     private String areaHabitat;
     private Double altura;
@@ -63,11 +61,11 @@ public class Pokemon {
         this.imagemUrl = imagemUrl;
     }
 
-    public String getTipo() {
+    public Tipo getTipo() {
         return tipo;
     }
 
-    public void setTipo(String tipo) {
+    public void setTipo(Tipo tipo) {
         this.tipo = tipo;
     }
 
