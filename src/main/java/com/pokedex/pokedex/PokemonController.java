@@ -1,5 +1,6 @@
 package com.pokedex.pokedex;
 
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,19 +15,19 @@ public class PokemonController {
 
     // Endpoint para cadastrar Pokémon visto
     @PostMapping("/visto")
-    public PokemonVistoDTO cadastrarPokemonVisto(@RequestBody PokemonVistoDTO pokemonDTO) {
+    public PokemonVistoDTO cadastrarPokemonVisto(@Valid @RequestBody PokemonVistoDTO pokemonDTO) {
         return pokemonService.cadastrarPokemonVisto(pokemonDTO);
     }
 
     // Endpoint para cadastrar Pokémon capturado
     @PostMapping("/capturado")
-    public PokemonCapturadoDTO cadastrarPokemonCapturado(@RequestBody PokemonCapturadoDTO pokemonDTO) {
+    public PokemonCapturadoDTO cadastrarPokemonCapturado(@Valid @RequestBody PokemonCapturadoDTO pokemonDTO) {
         return pokemonService.cadastrarPokemonCapturado(pokemonDTO);
     }
 
     // Endpoint para atualizar Pokémon pelo número
     @PutMapping("/{numero}")
-    public PokemonCapturadoDTO atualizarPokemon(@PathVariable Integer numero, @RequestBody PokemonCapturadoDTO pokemonDTO) {
+    public PokemonCapturadoDTO atualizarPokemon(@PathVariable Integer numero, @Valid @RequestBody PokemonCapturadoDTO pokemonDTO) {
         return pokemonService.atualizarPokemon(numero, pokemonDTO);
     }
 

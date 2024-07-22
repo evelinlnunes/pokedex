@@ -1,12 +1,23 @@
 package com.pokedex.pokedex;
 
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
+
 public class PokemonCapturadoDTO {
 
+    @NotNull(message = "Número é obrigatório")
     private Integer numero;
+
+    @NotNull(message = "Nome é obrigatório")
+    @Size(min = 1, message = "Nome não pode ser vazio")
     private String nome;
+
     private String descricao;
     private String imagemUrl;
+
+    @NotNull(message = "Tipo é obrigatório")
     private Tipo tipo; // Atualizado para o tipo enum
+
     private String categoria;
     private String areaHabitat;
     private Double altura;
@@ -85,4 +96,3 @@ public class PokemonCapturadoDTO {
         this.peso = peso;
     }
 }
-

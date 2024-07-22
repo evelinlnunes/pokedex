@@ -1,10 +1,20 @@
 package com.pokedex.pokedex;
 
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
+
 public class PokemonVistoDTO {
 
+    @NotNull(message = "Número é obrigatório")
     private Integer numero;
+
+    @NotNull(message = "Nome é obrigatório")
+    @Size(min = 1, message = "Nome não pode ser vazio")
     private String nome;
+
     private String imagemUrl;
+
+    @NotNull(message = "Área de Habitat é obrigatória")
     private String areaHabitat;
 
     // Getters and Setters
